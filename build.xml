@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<project name="fb-rico" basedir="." default="jar">
+
+    <presetdef name="javac">
+        <javac encoding="UTF-8" />
+    </presetdef>
+
+    <property name="javac.source" value="1.7" />
+    <!-- <property name="javac.target" value="1.8" /> -->
+
+    <property name="src.dir" value="${basedir}/src" />
+    <property name="lib.dir" value="${basedir}/lib" />
+    <property name="etc.dir" value="${basedir}/etc" />
+    <property name="target.dir" value="${basedir}/target" />
+    <property name="classes.dir" value="${target.dir}/classes"/>
+    <property name="jar.dir" value="${target.dir}/jar"/>
+
+    <property name="project.version" value="0.0.1" />
+
+    <path id="classpath">
+        <fileset dir="${lib.dir}" includes="**/*.jar"/>
+    </path>
+
+    <path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
+
+    <target name="clean">
+        <delete dir="${target.dir}"/>
+    </target>
+
+    <target name="compile">
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}-${project.version}.jar" basedir="${classes.dir}">
+
+            <fileset dir="etc">
+                <include name="findbugs.xml" />
+                <include name="messages.xml" />
+                <include name="plugin.xml" />
+            </fileset>
+
+            <!-- <zipgroupfileset dir="${lib.dir}" includes="**/*.jar" /> -->
+
+            <manifest>
+                <attribute name="${ant.project.name}" value="${project.version}" />
+            </manifest>
+        </jar>
+    </target>
+
+</project>

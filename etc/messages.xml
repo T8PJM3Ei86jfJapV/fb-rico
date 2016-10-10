@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="messagecollection.xsd">
+
+	<Plugin>
+		<ShortDescription>fb-rico plugin</ShortDescription>
+		<Details>
+			<![CDATA[
+			<p>This plugin contains FindBugs detectors from the fb-rico project</p>
+			]]>
+		</Details>
+		<BugsUrl>http://www.ricoxie.com</BugsUrl>
+		<AllBugsUrl>http://www.ricoxie.com</AllBugsUrl>
+	</Plugin>
+
+	<!-- Detectors -->
+    <Detector class="com.ricoxie.fbrico.detect.ForbidSystemOut">
+        <Details>
+            <![CDATA[
+            <p>Avoid calling System.out
+            <p>Use log instead
+            ]]>
+         </Details>
+    </Detector>
+
+	<!-- BugPattern -->
+    <BugPattern type="RICO_FORBID_SYSTEM_OUT">
+        <ShortDescription>Calling System.out</ShortDescription>
+        <LongDescription>{1}Avoid calling System.out</LongDescription>
+        <Details>
+            <![CDATA[
+            <p>Avoid calling System.out, use log instead.</p>
+            ]]>
+        </Details>
+    </BugPattern>
+
+	<!-- BugCode -->
+	<BugCode abbrev="RICO">Problems reported by Rico</BugCode>
+
+</MessageCollection>

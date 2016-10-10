@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Plugin descriptor for fb-rico plugin. This plugin is enabled by default. -->
+<FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="findbugsplugin.xsd" pluginid="com.ricoxie.fbrico" defaultenabled="true"
+	provider="fb-rico project" website="http://www.ricoxie.com">
+
+	<!-- Passes -->
+
+	<!-- Detectors -->
+	<Detector class="com.ricoxie.fbrico.detect.ForbidSystemOut"
+		reports="RICO_FORBID_SYSTEM_OUT" />
+
+	<!-- BugPattern -->
+	<BugPattern abbrev="RICO" type="RICO_FORBID_SYSTEM_OUT"
+		category="CORRECTNESS" />
+
+
+</FindbugsPlugin>
